@@ -1,0 +1,40 @@
+{
+  "name": "developer-assistant-discord-bot",
+  "version": "1.0.0",
+  "description": "AI-powered Discord bot for developer communities – code analysis, docs, error explain, GitHub analysis, skill scoring",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "dev:watch": "nodemon --exec ts-node src/index.ts --ext ts",
+    "register": "ts-node src/scripts/register-commands.ts",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "openai",
+    "developer",
+    "code-analysis",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "mongoose": "^8.0.3",
+    "openai": "^4.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
