@@ -71,3 +71,33 @@ export async function explainConcept(
     DEFAULT_MODEL
   );
 }
+
+export async function analyzeGitHubRepo(context: string): Promise<string> {
+  const system = `You are a senior developer reviewing a GitHub repository. Given the repo metadata, languages, root structure, and README excerpt below, produce a concise analysis with:
+1. **Tech stack** – Main languages and likely frameworks/tools (infer from structure and README).
+2. **Project structure** – Brief overview of the layout and key directories/files.
+3. **Improvement suggestions** – 3–5 concrete tips (docs, structure, tooling, or best practices).
+Use markdown. Be concise and actionable.`;
+  return chat(
+    [
+      { role: 'system', content: system },
+      { role: 'user', content: `Repository data:\n\n${context}` },
+    ],
+    DEFAULT_MODEL
+  );
+}
+
+export async function analyzeProjectHealth(context: string): Promise<string> {
+  const system = `You are a project health analyst. Given the repo metadata, recent commits, and contributors below, produce a short report with:
+1. **Commit activity** – How active the repo is (e.g. last 7/30 days), who’s committing.
+2. **Productivity insights** – Main contributors, commit frequency, any patterns.
+3. **Activity feedback** – One short verdict: e.g. "Healthy and active", "Low recent activity", "Many open issues", etc., and one sentence of advice if relevant.
+Use markdown. Be concise.`;
+  return chat(
+    [
+      { role: 'system', content: system },
+      { role: 'user', content: `Repository activity data:\n\n${context}` },
+    ],
+    DEFAULT_MODEL
+  );
+}

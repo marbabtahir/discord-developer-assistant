@@ -136,6 +136,7 @@ During code analysis, the bot checks for:
 # 📚 Documentation
 
 - **[Discord Developer Portal Setup](docs/DISCORD_SETUP.md)** – Step-by-step guide: what to select in the Bot section (intents, token), Installation (scopes, permissions), and how to get `APPLICATION_ID`, `BOT_TOKEN`, `PUBLIC_KEY`. **Read this before running the bot.**
+- **[GitHub Token (optional)](docs/GITHUB_TOKEN.md)** – How to get `GITHUB_TOKEN` for `/github-analyze` and `/project-health` (higher API rate limit).
 - **[Architecture](docs/ARCHITECTURE.md)** – Project structure and how to add new commands or extend features.
 
 ---

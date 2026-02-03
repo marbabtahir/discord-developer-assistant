@@ -34,6 +34,8 @@ export const config = {
   nodeEnv: optionalEnv('NODE_ENV', 'development'),
   /** OpenAI model for chat (can be overridden per feature later) */
   openaiModel: optionalEnv('OPENAI_MODEL', 'gpt-3.5-turbo'),
+  /** GitHub Personal Access Token (optional; higher rate limit for /github-analyze, /project-health). See docs/GITHUB_TOKEN.md */
+  githubToken: optionalEnv('GITHUB_TOKEN', ''),
 } as const;
 
 export type Config = typeof config;

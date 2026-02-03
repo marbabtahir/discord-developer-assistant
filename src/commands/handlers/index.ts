@@ -9,7 +9,10 @@ import {
   generateDocs,
   explainError,
   explainConcept,
+  analyzeGitHubRepo,
+  analyzeProjectHealth,
 } from '../../services/aiService';
+import { getRepoAnalysisData, getRepoHealthData } from '../../services/githubService';
 import { getOrCreateUser, incrementCommandUsage } from '../../services/userService';
 import { logger } from '../../utils';
 
@@ -105,20 +108,44 @@ export const handlers: Record<string, Handler> = {
     }
   },
 
-  'github-analyze': async (interaction) => {
+  'github-analyze': async (interaction, options) => {
+    const url = String(options.url ?? '').trim();
+    if (!url) {
+      await interaction.reply({ content: 'Please provide a public GitHub repository URL.', ephemeral: true });
+      return;
+    }
     await interaction.deferReply();
-    await interaction.editReply({
-      content:
-        'GitHub repository analysis is not implemented yet. It will analyze tech stack, project structure, and improvement suggestions. Stay tuned!',
-    });
+    try {
+      const context = await getRepoAnalysisData(url);
+      const result = await analyzeGitHubRepo(context);
+      await getOrCreateUser(interaction.user.id, interaction.user.username);
+      await incrementCommandUsage(interaction.user.id, interaction.user.username, 'githubAnalyze');
+      await safeReply(interaction, result);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'GitHub analysis failed. Please try again.';
+      logger.error('github-analyze error', err);
+      await interaction.editReply({ content: message });
+    }
   },
 
-  'project-health': async (interaction) => {
+  'project-health': async (interaction, options) => {
+    const url = String(options.url ?? '').trim();
+    if (!url) {
+      await interaction.reply({ content: 'Please provide a public GitHub repository URL.', ephemeral: true });
+      return;
+    }
     await interaction.deferReply();
-    await interaction.editReply({
-      content:
-        'Project health evaluation is not implemented yet. It will show commit activity and productivity insights. Stay tuned!',
-    });
+    try {
+      const context = await getRepoHealthData(url);
+      const result = await analyzeProjectHealth(context);
+      await getOrCreateUser(interaction.user.id, interaction.user.username);
+      await incrementCommandUsage(interaction.user.id, interaction.user.username, 'projectHealth');
+      await safeReply(interaction, result);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Project health check failed. Please try again.';
+      logger.error('project-health error', err);
+      await interaction.editReply({ content: message });
+    }
   },
 
   'explain': async (interaction, options) => {
