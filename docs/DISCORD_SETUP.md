@@ -52,9 +52,9 @@ Enable **only** what you need:
 
 | Intent | Enable? | Why |
 |--------|--------|-----|
-| **Presence Intent** | ❌ No | Not needed for this bot. |
-| **Server Members Intent** | ❌ No | Not required for slash commands. |
-| **Message Content Intent** | ❌ No | Not required for this bot. |
+| **Presence Intent** | No | Not needed for this bot. |
+| **Server Members Intent** | No | Not required for slash commands. |
+| **Message Content Intent** | No | Not required for this bot. |
 
 **Steps:**
 

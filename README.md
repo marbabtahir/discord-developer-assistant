@@ -1,4 +1,4 @@
-# 🚀 Developer Assistant – Discord Bot
+# Developer Assistant – Discord Bot
 
 AI-powered Discord bot for developer communities.  
 Built with **Node.js, TypeScript, discord.js, MongoDB, and OpenAI (gpt-3.5-turbo)**.
@@ -7,7 +7,7 @@ This bot analyzes code, explains errors, generates documentation, evaluates GitH
 
 ---
 
-# 📌 Features
+# Features
 
 ## 1 `/analyze-code`
 
@@ -122,7 +122,7 @@ During code analysis, the bot checks for:
 
 ---
 
-# 🛠 Tech Stack
+# Tech Stack
 
 - Node.js
 - TypeScript
@@ -133,7 +133,7 @@ During code analysis, the bot checks for:
 
 ---
 
-# 📚 Documentation
+# Documentation
 
 - **[Discord Developer Portal Setup](docs/DISCORD_SETUP.md)** – Step-by-step guide: what to select in the Bot section (intents, token), Installation (scopes, permissions), and how to get `APPLICATION_ID`, `BOT_TOKEN`, `PUBLIC_KEY`. **Read this before running the bot.**
 - **[GitHub Token (optional)](docs/GITHUB_TOKEN.md)** – How to get `GITHUB_TOKEN` for `/github-analyze` and `/project-health` (higher API rate limit).
@@ -141,7 +141,7 @@ During code analysis, the bot checks for:
 
 ---
 
-# ⚙️ Installation
+# Installation
 
 ## 1️ Clone Repository
 
@@ -211,7 +211,7 @@ npm run dev:watch
 
 ---
 
-# 🔐 Required Discord Bot Permissions
+# Required Discord Bot Permissions
 
 The bot needs:
 
@@ -224,7 +224,7 @@ See [docs/DISCORD_SETUP.md](docs/DISCORD_SETUP.md) for Bot and OAuth2 setup.
 
 ---
 
-# 🗄 Database Structure (MongoDB)
+# Database Structure (MongoDB)
 
 ## Users Collection
 
@@ -247,7 +247,7 @@ Tracks user progression and developer level.
 
 ---
 
-# 🤖 OpenAI Configuration
+# OpenAI Configuration
 
 Model used:
 
@@ -265,7 +265,7 @@ No credentials are stored inside source code.
 
 ---
 
-# 📂 Project Structure
+# Project Structure
 
 ```
 src/
@@ -291,7 +291,7 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how to add new commands and
 
 ---
 
-# 🚀 Running in Production
+# Running in Production
 
 ```bash
 npm run build
@@ -306,7 +306,7 @@ Ensure:
 
 ---
 
-# 📄 License
+# License
 
 This project is open-source and available under the MIT License.
 
